@@ -58,13 +58,13 @@ Net Conversion: 685.325 ÷ 1.0 ÷ 40.000 = 18 dias
 ## Experiment Analysis
 ### Sanity Checks
 
--           |Controle	|Experimento
+         |Controle	|Experimento
 ------------|-----------|------------
 Pageviews   |	345543	|344660
 Clicks	    |    28378	|28325
 
 
- -          |Probabilidade|SE	       |m       |CI_Lower    |CI_upper	 |Valor observado |Status
+      |Probabilidade|SE	       |m       |CI_Lower    |CI_upper	 |Valor observado |Status
 ------------|-------------|------------|--------|------------|-----------|----------------|--------
 Pageviews   |0.5	  |0.0006018   |0.00118 |0.49882     |	0.50117961|	0.500639667|	Passou
 Clicks	    |0.5	  |0.0020997   |0.00412	|0.49588     |	0.5041155|	0.500467347|	Passou
@@ -79,7 +79,7 @@ Como Click-through-probability é baseada nas invariantes Pageviews e clicks e a
 ## Result Analysis
 ### Effect Size Tests
 
-  -     | Controle      |Experimento
+       | Controle      |Experimento
   ----------|-------------|------------
 Clicks	    |17293        |	17260
 Enrollments |	3785	  |    3423
