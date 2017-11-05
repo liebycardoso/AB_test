@@ -11,8 +11,8 @@ As métricas invariantes não sofrem alteração no grupo de controle ou de expe
 - Click-through Probability.
 
 Evaluation metrics – Metricas de avaliação
-1. Gross conversion: Para o propósito do teste a taxa de conversão bruta é interessante porque computa o total de usuários (user-ids) que se matricularam durante o período de experiência dividido pelo total de cookies que clicaram no botão "Start free trial"; Se a hipótese for verdadeira, espera-se uma diminuição no valor desta métrica porque algumas pessoas podem optar por não se inscreverem após a mensagem informando o tempo de comprometimento superior a 5 horas esperado pelo aluno. 
-2. Net conversion: Esta métrica mede o total de alunos que fizeram pelo um pagamento em relação ao total de cookies que cliclaram no botão "Start free trial". Esta métrica complementa a de conversão bruta porque ela capta informações do segundo momento do teste, quando estamos mais interessados no total de alunos que permanceram matriculados e efetuaram o pagamento após os 14 dias de teste do curso. Não espero uma grande alteração neste valor em relação ao grupo de controle, porque neste período de teste estou supondo que após os 14 dias, mesmo no grupo de controle, ficam sempre os alunos com mais tempo de dedicação disponível.
+1. Gross conversion: Para o propósito do teste a taxa de conversão bruta é interessante porque computa o total de usuários (user-ids) que se matricularam durante o período de experiência dividido pelo total de cookies que clicaram no botão "Start free trial"; Se a hipótese for verdadeira, espera-se uma diminuição no valor desta métrica porque algumas pessoas podem optar por não se inscreverem após a mensagem informando o tempo de comprometimento superior a 5 horas esperado do aluno. 
+2. Net conversion: Esta métrica mede o total de alunos que fizeram pelo menos um pagamento em relação ao total de cookies que cliclaram no botão "Start free trial". Esta métrica complementa a de conversão bruta porque ela capta informações do segundo momento do teste, quando estamos mais interessados no total de alunos que permanceram matriculados e efetuaram o pagamento após os 14 dias de teste do curso. Não espero uma grande alteração neste valor em relação ao grupo de controle, porque neste período de teste estou supondo que após os 14 dias, mesmo no grupo de controle, ficam sempre os alunos com mais tempo de dedicação disponível.
 
 Metricas Descartadas
 1. Number of user-ids: O número de identificadores dos usuários não foi uma boa métrica invariante porque só é possível capturar este valor após o clique no botão de matrícula.
@@ -21,7 +21,7 @@ Metricas Descartadas
 ## Measuring Standard Deviation
 
 Probability of enrolling, given click:	0.20625
-Click-through-probability:	0.08
+Click-through-probability: 0.08
 Sample:	5.000
 
 Metric evaluation |	value   |	n	 |SD (RAIZ(p*(1-p)/n))	| m
@@ -44,7 +44,7 @@ Gross conversion|	0.20625|	0.08|	0.01|	25835|	645875
 Retention|	0.53	|0.0165	|0.01	|39115	|4.741.212.121
 Net Conversion	|0.10931|	0.08|	0.0075|27413|	685325
 
-Devido ao elevado número de dias para teste e o volume de pageviews necessários, Retention foi descartado como métrica.
+Devido ao elevado volume de pageviews necessários para o teste, a métrica de avaliação Retention foi descartado como métrica.
 
 Os dados foram calculados no site: http://www.evanmiller.org/ab-testing/sample-size.html
 ### Duration vs. Exposure
@@ -99,14 +99,14 @@ Net conversion: Com o valor observado de 0.004874, CI (-0.0019, 0.0116), dmin=0.
 
 ### Sign Tests
 
-Os dados foram calculados no site: https://www.graphpad.com/quickcalcs/binomial2/
- 
 Probabilidade |	Experimentos |	Sucesso Gross	|Sucesso Net
 --------------|--------------|------------------|------------
 0.5           |23	     |4          	|10
 
 Gross Conversion: Para o teste de duas caudas foi obtido um valor de p = 0.0026 < α=0.05, demonstrando uma significância estatística.
 Net conversion: Para o teste de duas caudas foi obtido um valor de p = 0.6776 > α=0.05, com este valor maior que o α, não há significância estatística.
+
+Os dados foram calculados no site: https://www.graphpad.com/quickcalcs/binomial2/
 
 ## Summary
 
@@ -121,22 +121,24 @@ Todos os cálculos estão registrados na planilha: https://github.com/liebycardo
 As métricas escolhidas para o teste A/B foram a conversão bruta (Gross Conversion) e a conversão liquida (Net conversion), com base nos resultados encontrados não recomendo o lançamento desta mudança no site da Udacity.
 Foi observado que no grupo experimental menos pessoas clicaram no botão de inscrição, sugerindo que menos alunos ficariam frustrados futuramente no curso por não terem tido tempo suficiente para se dedicar. Este resultado foi apoiado por um valor de p maior que o alfa de 0.05, demonstrando sua significância estatística.  Por outro lado, com um intervalo de confiança de 95% não obtivemos um nível de significância estatística e prática para a métrica de conversão líquida. Seria muito arriscado recomendar o prosseguimento desta mudança no site, uma vez que, não conseguimos demonstrar com um nível de certeza que haveria ganho para a Udacity em seu objetivo de reduzir o número de alunos frustrados que abandonam o período de teste gratuito, sem que houve perda significativa no número de alunos inscritos após este período. 
 
+A ausência de ganhos financeiros que podem decorrer do lançamento desta mudança, conforme sugere a falta de significância estatística na conversão líquida deve ser avaliada pela equipe Udacity, caso a empresa decida seguir com os testes.
+
 ## Follow-Up Experiment
 
-Vou usar minha própria experiência com o nanodegree da Udacity para sugerir um experimento futuro; acredito que exista um grupo de alunos como eu que possa ter experimentado uma frustação inicial, não por não ter o a disponibilidade necessária, mas por não ter a base de Python que era esperada. Para este grupo atender os primeiros meses de curso são necessárias mais que 5 horas semanais e provavelmente existe um outro de alunos com mais experiência que poderá atender todos os requisitos do curso com menos tempo de dedicação.
+Vou usar minha própria experiência com o nanodegree da Udacity para sugerir um experimento futuro; acredito que exista um grupo de alunos como eu que possa ter experimentado uma frustação inicial, não por não ter o a disponibilidade necessária, mas por não ter a base de Python que era esperada. Para este grupo, atender os primeiros meses de curso são necessárias mais que 5 horas semanais e provavelmente existe um outro de alunos com mais experiência que poderá atender todos os requisitos do curso com menos tempo de dedicação.
 
 Neste sentido a Udacity poderia testar um experimento em que:
 1. Ao demonstrar o interesse no curso, o potencial aluno é direcionado para um teste de conhecimento;
 2. Após o teste de conhecimento o aluno é alertado quanto ao nível de comprometimento necessário para sua atualização de conhecimento e para execução do nanodegree;
 3. Para os alunos com baixa pontuação a Udacity pode sugerir cursos complementares;
-4. Para o caso especifico do nanodegree de Análise de dados, o curso pode ser dividido em dois. E para os alunos com baixa pontuação fosse sugerido que completassem primeiro o nanodegree de Análise de dados 1, por exemplo.
+4. Para o caso especifico do nanodegree de Análise de dados, o curso pode ser dividido em dois. E para os alunos com baixa pontuação fosse sugerido que completassem primeiro o nanodegree de Análise de dados nível 1, por exemplo.
 
-A hipótese é que após o teste de conhecimento, o aluno que decidir se matricular no curso estará mais ciente do nível de exigência do curso e será mais provável que complete todo o curso, aumentando o percentual de retenção de alunos.
+A hipótese é que após o teste de conhecimento, o aluno que decidir se matricular no curso estará mais ciente do nível de exigência/dedicação e será mais provável que complete todo o curso, aumentando o percentual de retenção de alunos.
 
 Métricas sugeridas para o experimento:
 1. A unidade de desvio é o cookies.
-2. Invariantes:  Número de visualização de paginas (pageviews), o número de clicks no teste de conhecimento e o número de clicks no botão de inicio do teste (Free trial) de 14 dias.
-3. Avaliação: As mesmas métricas de conversão bruta e líquida usadas descritas neste teste. Incluiria também o teste de retenção para verificar o total de alunos que permaneceram inscritos no curso após o teste inicial de 14 dias.
+2. Invariantes:  Número de visualização de páginas (pageviews), o número de clicks no teste de conhecimento e o número de clicks no botão de inicio do teste (Free trial) de 14 dias.
+3. Avaliação: As mesmas métricas de conversão bruta e líquida usadas e descritas neste teste. Incluiria também o teste de retenção para verificar o total de alunos que permaneceram inscritos no curso após o teste inicial de 14 dias.
 
 ## Referências
 http://www.evanmiller.org/ab-testing/sample-size.html
