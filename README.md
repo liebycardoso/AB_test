@@ -11,8 +11,8 @@ As métricas invariantes não sofrem alteração no grupo de controle ou de expe
 - Click-through Probability.
 
 Evaluation metrics – Metricas de avaliação
-1.	Gross conversion: Para o propósito do teste a taxa de conversão bruta é interessante porque computa o total de usuários (user-ids) que se matricularam durante o período de experiência dividido pelo total de cookies que clicaram no botão "Start free trial"; Se a hipótese for verdadeira, espera-se uma diminuição no valor desta métrica porque algumas pessoas podem optar por não se inscreverem após a mensagem informando o tempo de comprometimento superior a 5 horas esperado pelo aluno. 
-2.	Net conversion: Esta métrica mede o total de alunos que fizeram pelo um pagamento em relação ao total de cookies que cliclaram no botão "Start free trial". Esta métrica complementa a de conversão bruta porque ela capta informações do segundo momento do teste, quando estamos mais interessados no total de alunos que permanceram matriculados e efetuaram o pagamento após os 14 dias de teste do curso. Não espero uma grande alteração neste valor em relação ao grupo de controle, porque neste período de teste estou supondo que após os 14 dias, mesmo no grupo de controle, ficam sempre os alunos com mais tempo de dedicação disponível.
+1. Gross conversion: Para o propósito do teste a taxa de conversão bruta é interessante porque computa o total de usuários (user-ids) que se matricularam durante o período de experiência dividido pelo total de cookies que clicaram no botão "Start free trial"; Se a hipótese for verdadeira, espera-se uma diminuição no valor desta métrica porque algumas pessoas podem optar por não se inscreverem após a mensagem informando o tempo de comprometimento superior a 5 horas esperado pelo aluno. 
+2. Net conversion: Esta métrica mede o total de alunos que fizeram pelo um pagamento em relação ao total de cookies que cliclaram no botão "Start free trial". Esta métrica complementa a de conversão bruta porque ela capta informações do segundo momento do teste, quando estamos mais interessados no total de alunos que permanceram matriculados e efetuaram o pagamento após os 14 dias de teste do curso. Não espero uma grande alteração neste valor em relação ao grupo de controle, porque neste período de teste estou supondo que após os 14 dias, mesmo no grupo de controle, ficam sempre os alunos com mais tempo de dedicação disponível.
 
 Metricas Descartadas
 1. Number of user-ids: O número de identificadores dos usuários não foi uma boa métrica invariante porque só é possível capturar este valor após o clique no botão de matrícula.
@@ -46,6 +46,7 @@ Net Conversion	|0.10931|	0.08|	0.0075|27413|	685325
 
 Devido ao elevado número de dias para teste e o volume de pageviews necessários, Retention foi descartado como métrica.
 
+Os dados foram calculados no site: http://www.evanmiller.org/ab-testing/sample-size.html
 ### Duration vs. Exposure
 
 O experimento consiste na apresentação de uma tela para o usuário com um questionamento que não envolve questões éticas. É considerado de baixo risco para o aluno e para a Udacity e não envolve a manipulação de dados sensíveis ou que possam comprometer o aluno. Com um tráfégo de 100%, estão previstos 18 dias para a execução, o que pode ser um tempo muito longo para este teste. 
@@ -113,6 +114,7 @@ A correção de Bonferroni não foi aplicada aos dados do experimento, porque ut
 
 Não foi identificada nenhuma discrepância entre os resultados obtidos nos testes de tamanho do efeito e de sinal. Ambos demonstraram que havia significância estatística nos testes realizados para a métrica de conversão bruta (Gross conversion) e que não havia a mesma significância para o conversão liquida (Net conversion).
 
+Todos os cálculos estão registrados na planilha: https://github.com/liebycardoso/AB_testing/blob/master/Final_Project_Baseline_Values.xlsx
 
 ## Recommendation
 
@@ -135,3 +137,12 @@ Métricas sugeridas para o experimento:
 1. A unidade de desvio é o cookies.
 2. Invariantes:  Número de visualização de paginas (pageviews), o número de clicks no teste de conhecimento e o número de clicks no botão de inicio do teste (Free trial) de 14 dias.
 3. Avaliação: As mesmas métricas de conversão bruta e líquida usadas descritas neste teste. Incluiria também o teste de retenção para verificar o total de alunos que permaneceram inscritos no curso após o teste inicial de 14 dias.
+
+## Referências
+http://www.evanmiller.org/ab-testing/sample-size.html
+https://rpubs.com/superseer/ab_testing
+https://www.graphpad.com/quickcalcs/binomial2/
+http://soniavieira.blogspot.com.br/2016/11/teste-de-bonferoni.html
+http://adalee2future.github.io/udacity_data_analyst/AB_Test.pdf
+http://lilychang.net/AB_Testing/
+
