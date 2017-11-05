@@ -141,10 +141,10 @@ Métricas sugeridas para o experimento:
 3. Avaliação: As mesmas métricas de conversão bruta e líquida usadas e descritas neste teste. Incluiria também o teste de retenção para verificar o total de alunos que permaneceram inscritos no curso após o teste inicial de 14 dias.
 
 ## Referências
-http://www.evanmiller.org/ab-testing/sample-size.html
-https://rpubs.com/superseer/ab_testing
-https://www.graphpad.com/quickcalcs/binomial2/
-http://soniavieira.blogspot.com.br/2016/11/teste-de-bonferoni.html
-http://adalee2future.github.io/udacity_data_analyst/AB_Test.pdf
-http://lilychang.net/AB_Testing/
+- http://www.evanmiller.org/ab-testing/sample-size.html
+- https://rpubs.com/superseer/ab_testing
+- https://www.graphpad.com/quickcalcs/binomial2/
+- http://soniavieira.blogspot.com.br/2016/11/teste-de-bonferoni.html
+- http://adalee2future.github.io/udacity_data_analyst/AB_Test.pdf
+- http://lilychang.net/AB_Testing/
 
