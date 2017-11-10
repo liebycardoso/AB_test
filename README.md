@@ -6,17 +6,19 @@ Invariant metrics – Metricas invariantes
 
 As métricas invariantes não sofrem alteração no grupo de controle ou de experimento, com base nesta orientação, foram escolhidas como métrica:
 
-- Number of Cookies;
-- Number of Clicks;
-- Click-through Probability.
+1. Number of Cookies: O número de cookies é a unidade de divergência deste experimento, espera-se permaneça sem variação entre o grupo de controle e o experimento;
+2. Number of Clicks: O total de cliques no botão ”Start Free trial” é contabilizado antes do momento do experimento, então o seu valor permanecerá constante entre o grupo de controle e experimento. 
+3. Click-through Probability: O valor da probabilidade de cliques é baseado no número de cookies e cliques, e assim como seus valores de referência permanecerão sem alteração. É uma opção de métrica interessante para nos ajudar a verificar se houve variação em ambos os grupos.
 
 Evaluation metrics – Metricas de avaliação
 1. Gross conversion: Para o propósito do teste a taxa de conversão bruta é interessante porque computa o total de usuários (user-ids) que se matricularam durante o período de experiência dividido pelo total de cookies que clicaram no botão "Start free trial"; Se a hipótese for verdadeira, espera-se uma diminuição no valor desta métrica porque algumas pessoas podem optar por não se inscreverem após a mensagem informando o tempo de comprometimento superior a 5 horas esperado do aluno. 
-2. Net conversion: Esta métrica mede o total de alunos que fizeram pelo menos um pagamento em relação ao total de cookies que cliclaram no botão "Start free trial". Esta métrica complementa a de conversão bruta porque ela capta informações do segundo momento do teste, quando estamos mais interessados no total de alunos que permanceram matriculados e efetuaram o pagamento após os 14 dias de teste do curso. Não espero uma grande alteração neste valor em relação ao grupo de controle, porque neste período de teste estou supondo que após os 14 dias, mesmo no grupo de controle, ficam sempre os alunos com mais tempo de dedicação disponível.
+2. Net conversion: Esta métrica mede o total de alunos que fizeram pelo menos um pagamento em relação ao total de cookies que clicaram no botão "Start free trial". Esta métrica complementa a de conversão bruta porque ela capta informações do segundo momento do teste, quando estamos mais interessados no total de alunos que permaneceram matriculados e efetuaram o pagamento após os 14 dias de teste do curso. Não espero uma grande alteração nesta métrica em relação ao grupo de controle, porque neste período de teste estou supondo que após os 14 dias, mesmo no grupo de controle, ficam sempre os alunos com mais tempo de dedicação disponível.
+
+Em resumo, para que possamos recomendar o lançamento do experimento, esperamos uma redução nos valores obtidos no grupo do experimento para Gross conversion e Net conversion, sendo que uma redução mais expressiva no valor de Gross conversion é ideal para reforçar o propósito do teste.
 
 Metricas Descartadas
 1. Number of user-ids: O número de identificadores dos usuários não foi uma boa métrica invariante porque só é possível capturar este valor após o clique no botão de matrícula.
-2. Retention: Poderia ser uma boa métrica, mas como pode ser confirmado nos cálculos realizados neste experimento, para obter o valor desta métrica foram estimados 119 dias e mais de 4 milhões de visualizações da página.
+2. Retention: Poderia ser uma boa métrica, mas como pode ser confirmado nos cálculos realizados neste experimento, para obter o valor desta métrica foram estimados 119 dias e mais de 4 milhões de visualizações da página. Caso fosse escolhida, supomos que haveria um aumento no total de alunos matriculados que fizeram pelo menos um pagamento, visto que, os alunos que não despunham de tempo foram alertados no início do experimento. 
 
 ## Measuring Standard Deviation
 
@@ -95,7 +97,7 @@ Net conversion	|   0.11512749|	0.003434134|	0.006730902|	0.004874|    -0.0116|	 
 
 
 Gross conversion: Com o valor observado de -0.0205, CI (-0.0291, -0.012), dmin=0.01, o resultado tem significância estatística e prática. 
-Net conversion: Com o valor observado de 0.004874, CI (-0.0019, 0.0116), dmin=0.0075, o resultado não tem significância estatística, nem prática.
+Net conversion: Com o valor observado de 0.004874, CI (-0.0116, 0.0019), dmin=0.0075, o resultado não tem significância estatística, nem prática.
 
 ### Sign Tests
 
@@ -110,7 +112,11 @@ Os dados foram calculados no site: https://www.graphpad.com/quickcalcs/binomial2
 
 ## Summary
 
-A correção de Bonferroni não foi aplicada aos dados do experimento, porque utilizei variáveis que estavam correlacionadas e usar a correção de Bonferroni neste caso seria muito conservador.
+A correção de Bonferroni é indicada quando o experimento é composto por múltiplos testes estatísticos e se deseja evitar que a hipótese nula seja rejeitada mesmo quando é verdadeira. Neste experimento optei por não aplicar a correção de Boferroni, uma vez que:
+- Ao aplicar a correção de Bonferroni o valor da alfa é dividido pelo total de testes, como temos duas métricas de teste teríamos um alfa de 0.05/2 = 0.0025, resultando num intervalo de confiança (CI) de 97.5% para cada teste. Este CI é muito conservador para o resultado que queremos alcançar, uma vez que, foi estabelecido em 0.05 para cada métrica;
+- A correção de Bonferroni pretende identificar pelo menos um resultado significativo no grupo de testes, mas para este experimento defini que as duas métricas (Gross e Net conversion) precisam ter um resultado com significância estatística para que o teste seja lançado;
+- Os dois testes estão correlacionados e usam a mesma unidade de divergência, o que somado aos dois fatores anteriores colabora para o descarte da correção de Bonferroni neste teste.
+
 
 Não foi identificada nenhuma discrepância entre os resultados obtidos nos testes de tamanho do efeito e de sinal. Ambos demonstraram que havia significância estatística nos testes realizados para a métrica de conversão bruta (Gross conversion) e que não havia a mesma significância para o conversão liquida (Net conversion).
 
@@ -125,20 +131,28 @@ A ausência de ganhos financeiros que podem decorrer do lançamento desta mudan�
 
 ## Follow-Up Experiment
 
-Vou usar minha própria experiência com o nanodegree da Udacity para sugerir um experimento futuro; acredito que exista um grupo de alunos como eu que possa ter experimentado uma frustação inicial, não por não ter o a disponibilidade necessária, mas por não ter a base de Python que era esperada. Para este grupo, atender os primeiros meses de curso são necessárias mais que 5 horas semanais e provavelmente existe um outro de alunos com mais experiência que poderá atender todos os requisitos do curso com menos tempo de dedicação.
+Vou usar minha própria experiência com o nanodegree da Udacity para sugerir um experimento futuro; acredito que exista um grupo de alunos como eu que possa ter experimentado uma frustação inicial, não por não ter o a disponibilidade necessária, mas por não ter a base de Python que era esperada. Para este grupo atender os primeiros meses de curso são necessárias mais que 5 horas semanais e provavelmente existe um outro de alunos com mais experiência que poderá atender todos os requisitos do curso com menos tempo de dedicação.
 
 Neste sentido a Udacity poderia testar um experimento em que:
 1. Ao demonstrar o interesse no curso, o potencial aluno é direcionado para um teste de conhecimento;
 2. Após o teste de conhecimento o aluno é alertado quanto ao nível de comprometimento necessário para sua atualização de conhecimento e para execução do nanodegree;
-3. Para os alunos com baixa pontuação a Udacity pode sugerir cursos complementares;
-4. Para o caso especifico do nanodegree de Análise de dados, o curso pode ser dividido em dois. E para os alunos com baixa pontuação fosse sugerido que completassem primeiro o nanodegree de Análise de dados nível 1, por exemplo.
+3. Para os alunos com baixa pontuação a Udacity pode sugerir cursos complementares.
 
 A hipótese é que após o teste de conhecimento, o aluno que decidir se matricular no curso estará mais ciente do nível de exigência/dedicação e será mais provável que complete todo o curso, aumentando o percentual de retenção de alunos.
 
 Métricas sugeridas para o experimento:
-1. A unidade de desvio é o cookies.
-2. Invariantes:  Número de visualização de páginas (pageviews), o número de clicks no teste de conhecimento e o número de clicks no botão de inicio do teste (Free trial) de 14 dias.
-3. Avaliação: As mesmas métricas de conversão bruta e líquida usadas e descritas neste teste. Incluiria também o teste de retenção para verificar o total de alunos que permaneceram inscritos no curso após o teste inicial de 14 dias.
+1. A unidade de divergência mais adequada é o user-id, por permanecer sem alteração tanto no grupo de controle, quanto de experimento.
+2. Invariantes:  Número de visualização de páginas (pageviews), o número de clicks no teste de conhecimento e o número de clicks no botão de início do teste (Free trial) de 14 dias.
+3. Avaliação: As mesmas métricas de conversão bruta e líquida usadas e descritas neste teste. Com alteração dos parâmetros definidos incluiria também o teste de retenção para verificar o total de alunos que permaneceram inscritos no curso após o teste inicial de 14 dias.
+![Fluxo](http://https://github.com/liebycardoso/AB_testing/FluxoTesteAB.png)
+
+Para que o experimento seja lançado é necessário que tenhamos um crescimento estatisticamente significativo (CI=95%) na taxa de conversão bruta após clicar no star free trial e no teste de conhecimento. Para complementar a decisão é necessário que haja um crescimento menos expressivo, mas ainda com significância estatística (CI=95%) na conversão líquida de matriculados que fizeram o pagamento vindos do curso de fundamento ou não. Um outro teste pode ser executado em paralelo para verificar a taxa de conversão dos alunos que primeiro fizeram o curso de fundamento e dos que foram diretamente para a fase de free trial de 14 dias.
+
+*Observações:*
+Considerando que no teste sugerido teríamos em média o mesmo volume de participantes do teste descrito neste trabalho, usar a métrica de retenção seria inviável por causa do total de pageviews necessários para o teste. Uma possível solução seria diminuir a expectativa em relação à taxa de conversão, mas caberá à empresa definir e comunicar suas expectativas em relação ao teste. 
+
+Apesar do teste não envolver questões éticas, legais e de risco para os participantes, seria mais prudente considerar um tráfego de 80% para este experimento, estendendo, para a mesma massa de dados, o tempo do experimento de 18 para 22 dias. Ao propor um teste de conhecimento estamos inserindo uma nova etapa ao processo de inscrição, e isto pode desanimar algumas pessoas de participarem, portanto, é importante expor somente parte do grupo ao experimento para que possamos fazer uma comparação.
+
 
 ## Referências
 - http://www.evanmiller.org/ab-testing/sample-size.html
@@ -147,4 +161,7 @@ Métricas sugeridas para o experimento:
 - http://soniavieira.blogspot.com.br/2016/11/teste-de-bonferoni.html
 - http://adalee2future.github.io/udacity_data_analyst/AB_Test.pdf
 - http://lilychang.net/AB_Testing/
+- http://onlinelibrary.wiley.com/doi/10.1111/opo.12131/pdf
+- http://www.portalaction.com.br/anova/teste-de-comparacoes-multiplas
+
 
