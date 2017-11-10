@@ -144,6 +144,7 @@ Métricas sugeridas para o experimento:
 1. A unidade de divergência mais adequada é o user-id, por permanecer sem alteração tanto no grupo de controle, quanto de experimento.
 2. Invariantes:  Número de visualização de páginas (pageviews), o número de clicks no teste de conhecimento e o número de clicks no botão de início do teste (Free trial) de 14 dias.
 3. Avaliação: As mesmas métricas de conversão bruta e líquida usadas e descritas neste teste. Com alteração dos parâmetros definidos incluiria também o teste de retenção para verificar o total de alunos que permaneceram inscritos no curso após o teste inicial de 14 dias.
+
 ![Fluxo](http://https://github.com/liebycardoso/AB_testing/FluxoTesteAB.png)
 
 Para que o experimento seja lançado é necessário que tenhamos um crescimento estatisticamente significativo (CI=95%) na taxa de conversão bruta após clicar no star free trial e no teste de conhecimento. Para complementar a decisão é necessário que haja um crescimento menos expressivo, mas ainda com significância estatística (CI=95%) na conversão líquida de matriculados que fizeram o pagamento vindos do curso de fundamento ou não. Um outro teste pode ser executado em paralelo para verificar a taxa de conversão dos alunos que primeiro fizeram o curso de fundamento e dos que foram diretamente para a fase de free trial de 14 dias.
