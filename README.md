@@ -14,10 +14,12 @@ Evaluation metrics – Metricas de avaliação
 1. Gross conversion: Para o propósito do teste a taxa de conversão bruta é interessante porque computa o total de usuários (user-ids) que se matricularam durante o período de experiência dividido pelo total de cookies que clicaram no botão "Start free trial"; Se a hipótese for verdadeira, espera-se uma diminuição no valor desta métrica porque algumas pessoas podem optar por não se inscreverem após a mensagem informando o tempo de comprometimento superior a 5 horas esperado do aluno. 
 2. Net conversion: Esta métrica mede o total de alunos que fizeram pelo menos um pagamento em relação ao total de cookies que clicaram no botão "Start free trial". Esta métrica complementa a de conversão bruta porque ela capta informações do segundo momento do teste, quando estamos mais interessados no total de alunos que permaneceram matriculados e efetuaram o pagamento após os 14 dias de teste do curso. Não espero uma grande alteração nesta métrica em relação ao grupo de controle, porque neste período de teste estou supondo que após os 14 dias, mesmo no grupo de controle, ficam sempre os alunos com mais tempo de dedicação disponível.
 
-Em resumo, para que possamos recomendar o lançamento do experimento, esperamos uma redução nos valores obtidos no grupo do experimento para Gross conversion e Net conversion, sendo que uma redução mais expressiva no valor de Gross conversion é ideal para reforçar o propósito do teste.
+Em resumo, o lançamento do experimento será recomendado quando houver no grupo de experimento:
+a.	Uma diminuição mais expressiva no valor de Gross conversion, já que esperamos que o alerta na tela reduza a quantidade de alunos sem tempo disponível para se dedicar ao curso cadastrados; 
+b.	Uma redução no resultado de Net conversion, mas esperamos, para que não haja perdas financeiras para empresa, que ela seja menos expressiva e esteja dentro do limite de significância prática.
 
-Metricas Descartadas
-1. Number of user-ids: O número de identificadores dos usuários não foi uma boa métrica invariante porque só é possível capturar este valor após o clique no botão de matrícula.
+Metricas descartadas
+1. Number of user-ids: O número de identificadores dos usuários não foi uma boa métrica invariante porque só é possível capturar este valor após o clique no botão de matrícula. Esta métrica poderia ser usada como métrica de avaliação, mas seria redundante já que estou usando este dado na métrica de conversão bruta (Gross conversion).  Minha preferência por usar Gross conversion está no fato de que os dados estão em forma normalizada e não em seu estado bruto como no user-ids.
 2. Retention: Poderia ser uma boa métrica, mas como pode ser confirmado nos cálculos realizados neste experimento, para obter o valor desta métrica foram estimados 119 dias e mais de 4 milhões de visualizações da página. Caso fosse escolhida, supomos que haveria um aumento no total de alunos matriculados que fizeram pelo menos um pagamento, visto que, os alunos que não despunham de tempo foram alertados no início do experimento. 
 
 ## Measuring Standard Deviation
@@ -141,13 +143,13 @@ Neste sentido a Udacity poderia testar um experimento em que:
 A hipótese é que após o teste de conhecimento, o aluno que decidir se matricular no curso estará mais ciente do nível de exigência/dedicação e será mais provável que complete todo o curso, aumentando o percentual de retenção de alunos.
 
 Métricas sugeridas para o experimento:
-1. A unidade de divergência mais adequada é o user-id, por permanecer sem alteração tanto no grupo de controle, quanto de experimento.
-2. Invariantes:  Número de visualização de páginas (pageviews), o número de clicks no teste de conhecimento e o número de clicks no botão de início do teste (Free trial) de 14 dias.
-3. Avaliação: As mesmas métricas de conversão bruta e líquida usadas e descritas neste teste. Com alteração dos parâmetros definidos incluiria também o teste de retenção para verificar o total de alunos que permaneceram inscritos no curso após o teste inicial de 14 dias.
+1. A unidade de divergência mais adequada é o cookie, por permanecer sem alteração tanto no grupo de controle, quanto de experimento. É a variável que é possível controlar antes mesmo do clique no botão do free trial e da criação do user-id;
+2. Invariantes:  Número de visualização de páginas (pageviews) e o número de clicks no botão de início do teste (Free trial) de 14 dias;
+3. Avaliação: As mesmas métricas de conversão bruta ( # user-ids matriculados / # cookies clicaram no botão Free Trial) e líquida (# user-ids matriculados e pagante / # cookies clicaram no botão Free Trial) usadas e descritas neste teste. 
 
 ![Fluxo](FluxoTesteAB.png)
 
-Para que o experimento seja lançado é necessário que tenhamos um crescimento estatisticamente significativo (CI=95%) na taxa de conversão bruta após clicar no star free trial e no teste de conhecimento. Para complementar a decisão é necessário que haja um crescimento menos expressivo, mas ainda com significância estatística (CI=95%) na conversão líquida de matriculados que fizeram o pagamento vindos do curso de fundamento ou não. Um outro teste pode ser executado em paralelo para verificar a taxa de conversão dos alunos que primeiro fizeram o curso de fundamento e dos que foram diretamente para a fase de free trial de 14 dias.
+Para que o experimento seja lançado é necessário que tenhamos um crescimento estatisticamente significativo (CI=95%) na taxa de conversão bruta após clicar no star free trial. Para complementar a decisão é necessário que haja um crescimento menos expressivo, mas ainda com significância estatística (CI=95%) na conversão líquida de matriculados que fizeram o pagamento vindos do curso de fundamento ou não. As duas métricas combinadas têm capacidade de demonstrar se o teste de conhecimento foi capaz de desencorajar a matricula de alunos que ainda não estavam preparados para o curso, sem que houvesse uma perda financeira para a empresa capturada através da taxa de conversão líquida. 
 
 *Observações:*
 Considerando que no teste sugerido teríamos em média o mesmo volume de participantes do teste descrito neste trabalho, usar a métrica de retenção seria inviável por causa do total de pageviews necessários para o teste. Uma possível solução seria diminuir a expectativa em relação à taxa de conversão, mas caberá à empresa definir e comunicar suas expectativas em relação ao teste. 
